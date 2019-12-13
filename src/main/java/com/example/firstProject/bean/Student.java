@@ -10,6 +10,7 @@ import java.util.Date;
 @ApiModel(value = "Student")
 @Data
 public class Student {
+
   @ApiModelProperty(value = "主id")
   private int id;
 
