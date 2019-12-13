@@ -25,18 +25,13 @@ public class UserDetailService implements UserDetailsService {
   @Override
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
     // 查询用户信息
-    //    Student user = studentService.getStudentByName(username);
-    //    if (user == null) {
-    //      System.out.println("用户不存在！");
-    //      throw new UsernameNotFoundException(
-    //          String.format("No user found with username '%s'.", username));
-    //    }
-
-    // 模拟一个用户，替代数据库获取逻辑
-    Student user = new Student();
-    user.setName(username);
-    user.setPassword(this.passwordEncoder.encode("123456"));
-
+    Student student = new Student();
+    student.setName(username);
+    Student user = studentService.getStudentByName(student);
+    if (user == null) {
+      throw new UsernameNotFoundException(
+              String.format("No user found with username '%s'.", username));
+    }
     // 输出加密后的密码
     System.out.println(user.getPassword());
     // 权限

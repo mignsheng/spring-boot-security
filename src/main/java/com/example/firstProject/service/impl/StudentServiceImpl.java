@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Map;
 
 @Service("StudentService")
 public class StudentServiceImpl implements StudentService {
@@ -38,17 +37,17 @@ public class StudentServiceImpl implements StudentService {
   //  }
 
   @Override
-  public List<Map<String, Object>> getAllStudents() {
+  public List<Student> getAllStudents() {
     return this.mysqlFirstStudentMapper.getAllStudents();
   }
 
   @Override
-  public List<Map<String, Object>> getStudentOnlyOne() {
+  public List<Student> getStudentOnlyOne() {
     return this.mysqlSecondStudentMapper.getStudentOnlyOne();
   }
 
   @Override
-  public Student getStudentByName(String name) {
-    return this.mysqlFirstStudentMapper.getStudentByName(name);
+  public Student getStudentByName(Student student) {
+    return this.mysqlFirstStudentMapper.getStudentByName(student);
   }
 }
