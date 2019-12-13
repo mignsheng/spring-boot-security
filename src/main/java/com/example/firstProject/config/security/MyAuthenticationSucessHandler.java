@@ -29,6 +29,8 @@ public class MyAuthenticationSucessHandler implements AuthenticationSuccessHandl
     // 如果登录成功的相关逻辑，此处只做了跳转
     SavedRequest savedRequest = requestCache.getRequest(request, response);
 
+    // 创建token
+
     //    redirectStrategy.sendRedirect(request, response, savedRequest.getRedirectUrl());
     redirectStrategy.sendRedirect(request, response, "/index");
   }
