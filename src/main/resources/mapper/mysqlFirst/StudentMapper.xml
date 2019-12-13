@@ -2,11 +2,33 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.firstProject.dao.mysqlFirstDao.MysqlFirstStudentMapper">
+    <!--    <resultMap id="studentResultForList" type="Student">-->
+    <!--        <result column="ID" property="id" jdbcType="INTEGER"/>-->
+    <!--        <result column="NAME" property="name" jdbcType="VARCHAR"/>-->
+    <!--        <result column="PASSWORD" property="password" jdbcType="VARCHAR"/>-->
+    <!--        <result column="SEX" property="sex" jdbcType="INTEGER"/>-->
+    <!--        <result column="ADD_DATE" property="add_date" jdbcType="TIMESTAMP"/>-->
+    <!--    </resultMap>-->
+
+    <!--    <resultMap id="studentResult" extends="studentResultForList" type="Student">-->
+    <!--    </resultMap>-->
+
+    <!--    <sql id="sf-student">-->
+    <!--        <if test="id != null">AND a.ID = #{id}</if>-->
+    <!--        <if test="name != null and name != ''">AND a.NAME = #{name}</if>-->
+    <!--        <if test="password != null and password != ''">AND a.PASSWORD = #{password}</if>-->
+    <!--        <if test="sex != null">AND a.SEX = #{sex}</if>-->
+    <!--        <if test="add_date != null">AND a.ADD_DATE = #{add_date}</if>-->
+
+    <!--    </sql>-->
+
     <select id="getAllStudents" resultType="java.util.Map">
-        select * from student
+        select * from student where 1 = 1
+        <!--        <include refid="sf-student"/>-->
     </select>
 
-    <select id="getStudentByName" resultType="com.example.firstProject.bean.Student">
-        select * from student where 1=1 and  name = #{value}
+    <select id="getStudentByName" resultType="java.util.Map">
+        select * from student where 1=1 and name = #{value}
+        <!--        <include refid="sf-student"/>-->
     </select>
 </mapper>

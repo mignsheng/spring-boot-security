@@ -27,6 +27,7 @@ public class UserDetailService implements UserDetailsService {
     // 模拟一个用户，替代数据库获取逻辑
     Student user = studentService.getStudentByName(username);
     if (user == null) {
+      System.out.println("用户不存在！");
       throw new UsernameNotFoundException(
           String.format("No user found with username '%s'.", username));
     }

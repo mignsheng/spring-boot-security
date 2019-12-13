@@ -28,6 +28,7 @@ public class MyAuthenticationSucessHandler implements AuthenticationSuccessHandl
       throws IOException {
     // 如果登录成功的相关逻辑，此处只做了跳转
     SavedRequest savedRequest = requestCache.getRequest(request, response);
+
     //    redirectStrategy.sendRedirect(request, response, savedRequest.getRedirectUrl());
     redirectStrategy.sendRedirect(request, response, "/index");
   }
