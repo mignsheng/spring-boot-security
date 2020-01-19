@@ -1,10 +1,10 @@
 package com.example.firstProject.dao.mysqlSecondDao;
 
-import com.example.firstProject.bean.Student;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Map;
 
 @Component
 @Mapper
@@ -28,5 +28,5 @@ public interface MysqlSecondStudentMapper {
   //      })
   //  Student queryStudentByNo(String no);
 
-  List<Student> getStudentOnlyOne();
+  List<Map<String, Object>> getStudentOnlyOne();
 }

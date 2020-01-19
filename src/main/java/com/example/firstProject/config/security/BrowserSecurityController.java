@@ -30,7 +30,6 @@ public class BrowserSecurityController {
       if (StringUtils.endsWithIgnoreCase(targetUrl, ".html"))
         redirectStrategy.sendRedirect(request, response, "/login.html");
     }
-    redirectStrategy.sendRedirect(request, response, "/login.html");
-    return "访问的资源需要身份认证,请先登录！";
+    return "访问的资源需要身份认证！";
   }
 }

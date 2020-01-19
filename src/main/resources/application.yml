@@ -7,8 +7,7 @@ server:
 
 mybatis:
   # type-aliases扫描路径
-  type-aliases-package: com.example.firstProject.bean
-
+  # type-aliases-package:
   # mapper xml实现扫描路径
   mapper-locations: classpath:mapper/*.xml
   property:
@@ -88,8 +87,3 @@ spring:
   security:
     basic:
       enabled: true
-
-#logger
-logging:
-  level:
-    com.example.firstProject.dao.mysqlFirstDao: debug

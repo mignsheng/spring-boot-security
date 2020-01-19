@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Map;
 
 @Component
 @Mapper
@@ -28,7 +29,7 @@ public interface MysqlFirstStudentMapper {
   //      })
   //  Student queryStudentByNo(String no);
 
-  List<Student> getAllStudents();
+  List<Map<String, Object>> getAllStudents();
 
-  Student getStudentByName(Student student);
+  Student getStudentByName(String name);
 }

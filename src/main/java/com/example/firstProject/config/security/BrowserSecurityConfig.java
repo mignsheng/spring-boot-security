@@ -2,11 +2,11 @@ package com.example.firstProject.config.security;
 
 import com.example.firstProject.config.SmsCodeValidate.SmsAuthenticationConfig;
 import com.example.firstProject.config.SmsCodeValidate.SmsCodeFilter;
+import com.example.firstProject.config.filter.JWTAuthorizationFilter;
 import com.example.firstProject.config.imageValidate.ValidateCodeFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -18,7 +18,6 @@ import org.springframework.security.web.authentication.rememberme.PersistentToke
 import javax.sql.DataSource;
 
 @Configuration
-@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
 
   @Autowired MyAuthenticationSucessHandler authenticationSucessHandler;
@@ -64,8 +63,14 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
         .authenticated() // 都需要认证
         .and()
         .csrf()
-            .disable()
-            .apply(smsAuthenticationConfig); // 将短信验证码认证配置加到 Spring Security 中
+        .disable();
+
+    // 添加JWT filter
+    http.addFilterBefore(
+        new JWTAuthorizationFilter(authenticationManager()),
+        UsernamePasswordAuthenticationFilter.class);
+    // 禁用缓存
+    http.headers().cacheControl();
   }
 
   @Bean

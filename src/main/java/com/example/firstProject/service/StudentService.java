@@ -3,6 +3,7 @@ package com.example.firstProject.service;
 import com.example.firstProject.bean.Student;
 
 import java.util.List;
+import java.util.Map;
 
 public interface StudentService {
   //  int add(Student student);
@@ -13,9 +14,9 @@ public interface StudentService {
   //
   //  Student queryStudentByNo(String no);
 
-  List<Student> getAllStudents();
+  List<Map<String, Object>> getAllStudents();
 
-  List<Student> getStudentOnlyOne();
+  List<Map<String, Object>> getStudentOnlyOne();
 
-  Student getStudentByName(Student student);
+  Student getStudentByName(String name);
 }
